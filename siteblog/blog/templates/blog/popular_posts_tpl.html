@@ -1,0 +1,17 @@
+{% load static %}
+<h2 class="sidebar-title">Популярные посты</h2>
+<div class="grid">
+    {% for post in posts %}
+    <div class="portfolio-item popular">
+        {% if post.photo %}
+        <img src="{{ post.photo.url }}" alt="{{ post.title }}">
+        {% else %}
+        <img src="{% static 'img/post-image1.jpg' %}" alt="{{ post.title }}" class="mr-3">
+        {% endif %}
+        <div class="portfolio-text">
+            <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+            <p>By {{ post.author }}<span>|</span>{{ post.created_at|date:"d.m.Y" }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
